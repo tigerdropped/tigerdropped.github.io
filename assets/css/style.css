@@ -1,0 +1,346 @@
+/* ========================================= */
+/* Vars */
+/* ========================================= */
+:root {
+    scrollbar-color: #ff5252 #0000;
+
+    --preview-size: 24px;
+    --preview-weight: 400;
+    --preview-style: normal;
+    --preview-variant: normal;
+    --bg-color: #171017;
+    --card-bg: #22171c;
+    --bg-gradient-dark: #0d0710;
+    --link-bg-a125: #f9f9f920;
+    --link-bg-a25: #f9f9f940;
+    --text-main: #f9f9f9;
+    --text-main-a50: #f9f9f980;
+    --text-muted: #ff5252BF;
+    --border-color: #ff525240;
+    --accent-color: #ff5252;
+    --font-main: 'DM Sans', sans-serif;
+    --font-display: 'Fraunces', serif;
+}
+
+/* ========================================= */
+/* Base styling */
+/* ========================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: var(--font-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 3rem 0;
+}
+
+/* ========================================= */
+/* Layout utils */
+/* ========================================= */
+.flex-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap; /* Keeps it safe on mobile */
+}
+
+.grid-auto {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+/* ========================================= */
+/* Quick nav */
+/* ========================================= */
+.nav-header {
+    position: absolute;
+    inset: 0 0 auto 0;
+    padding: 1.5rem 2rem;
+    justify-content: center;
+    /* background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color); */
+}
+
+.nav-header .logo {
+    font-size: 2rem;
+    font-family: var(--font-display);
+    color: var(--text-main);
+}
+
+.nav-header .logo::first-letter {
+    color: var(--accent-color);
+}
+
+.nav-header nav {
+    display: flex;
+    gap: .5rem;
+    flex-wrap: wrap;
+}
+
+.nav-header nav a {
+    display: flex;
+    align-items: center;
+    min-height: 2rem;
+    padding: 0 0.75rem; 
+    background-color: var(--link-bg-a125);
+    border-radius: 1rem;
+    color: var(--text-main);
+    font-weight: 500;
+    line-height: 0.7;
+}
+
+.nav-header nav a:hover {
+    background-color: var(--link-bg-a25);
+}
+
+/* ========================================= */
+/* Main content feed */
+/* ========================================= */
+main {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+main > section { padding: 2rem 5%; }
+
+.hero {
+    text-align: center;
+    padding: 8rem 5%;
+    padding-top: 12rem;
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: 1rem;
+    color: var(--text-main);
+}
+
+.hero h1::first-letter {
+    color: var(--accent-color);
+}
+
+.hero p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* ========================================= */
+/* sections & cards */
+/* ========================================= */
+.feed-section {
+    margin-bottom: 4rem;
+}
+
+.feed-section h2 {
+    font-size: 2rem;
+    color: var(--text-main);
+}
+
+.card {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 1.5rem;
+    overflow: hidden;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-color);
+}
+
+/* Absolute elements */
+.card img {
+    object-fit: cover;
+    grid-area: 1 / 1 / -1 / -1;
+    width: 100%;
+}
+
+.char-name {
+    background: linear-gradient(var(--bg-gradient-dark) 25%, #0000);
+    padding: 1rem 1rem 5rem 1rem;
+    width: 100%;
+    grid-area: 1 / 1 / 2 / -1;
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+}
+
+.card h3::first-letter {
+    color: var(--accent-color);
+}
+
+.card h5 {
+    font-size: 0.825rem;
+    color: var(--text-main-a50);
+}
+
+.card h6 {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+
+.char-description {
+    grid-area: 2 / 1 / 3 / -1;
+    align-self: end;
+    font-size: 1rem;
+    background: linear-gradient(to top, var(--bg-gradient-dark) 25%, #0000);
+    padding: 1rem;
+    padding-top: 5rem;
+}
+
+.char-tags {
+    justify-content: flex-start;
+    gap: 0.25rem;
+}
+
+.tag,
+.badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 0.7;
+    display: flex;
+    align-items: center;
+    min-height: 1.5rem;
+    background: var(--link-bg-a125);
+    padding: 0 0.5rem;
+    border-radius: 1rem;
+}
+
+.badge {
+    background: var(--accent-color);
+    color: #171017;
+}
+
+.card p {
+    margin-top: 0.75rem;
+    font-family: var(--font-main);
+    color: var(--text-main);
+}
+
+.char-actions {
+    background: var(--bg-gradient-dark);
+    grid-area: -1 / 1 / -2 / -1;
+    gap: .5rem;
+    flex-wrap: nowrap;
+    padding: 0 .5rem .5rem .5rem;
+}
+
+.char-actions .btn { width: 100%; }
+
+/* ========================================= */
+/* Buttons */
+/* ========================================= */
+.btn, .btn-outline {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 1rem;
+    font-family: var(--font-main);
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* Solid Button (For Cards) */
+.btn {
+    background-color: var(--accent-color);
+    color: var(--bg-color); /* Dark text on bright background */
+    border: 1px solid var(--accent-color);
+}
+
+.btn:hover {
+    background-color: transparent;
+    color: var(--accent-color);
+    opacity: 1;
+}
+
+/* Outline Button (For Feed Headers) */
+.btn-outline {
+    background-color: transparent;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+}
+
+.btn-outline:hover {
+    background-color: var(--link-bg-a125);
+    opacity: 1;
+}
+
+/* ========================================= */
+/* Footer */
+/* ========================================= */
+.site-footer {
+    background-color: var(--card-bg);
+    border-top: 1px solid var(--border-color);
+    padding: 4rem 5% 1.5rem;
+    text-align: center;
+}
+
+.footer-content h2 {
+    font-size: 2.2rem;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+}
+
+.footer-content p {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+.contact-links {
+    justify-content: center;
+    gap: 2rem;
+}
+
+.contact-links a {
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    background-color: var(--link-bg-a125);
+}
+
+.contact-links a:hover {
+    background-color: var(--link-bg-a25);
+}
+
+.footer-bottom {
+    margin-top: 2rem;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}

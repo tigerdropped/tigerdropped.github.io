@@ -1,0 +1,53 @@
+
+{
+    "bots": [
+        {
+            "id": "Ayaka-01",
+            "name": "Ayaka Ishikawa",
+            "altName": "(石川彩香)",
+            "series": "",
+            "altGroup": "ayaka",
+            "tags": ["Angst"],
+            "thumbnail": "bots/files/ayaka-ishikawa.png",
+            "card": "bots/files/ayaka-ishikawa.json",
+            "scripts": [],
+            "previewText": ["She never planned to live this long, she simply stopped feeding hope. Now she's too tired to die."],
+            "description": "", 
+            "dateAdded": "27-09-2026",
+            "alt": false,
+            "legacy": true
+        },
+        {
+            "id": "marysia-01",
+            "name": "Marysia Dulcet",
+            "altName": "",
+            "series": "",
+            "altGroup": "marysia",
+            "tags": ["Angst"],
+            "thumbnail": "bots/files/marysia-dulcet.png",
+            "card": "bots/files/marysia-dulcet.json",
+            "scripts": [],
+            "previewText": ["You, me, this damned city and 58 quid. How romantic."],
+            "description": "", 
+            "dateAdded": "27-09-2026",
+            "alt": false,
+            "legacy": true
+        },
+        {
+            "id": "koya-01",
+            "name": "Koya Nakajima",
+            "altName": "(中島昊哉)",
+            "series": "koyasummoningprogram.exe",
+            "altGroup": "koya",
+            "tags": ["DDDNE!", "Kinktober"],
+            "thumbnail": "bots/files/koya-nakajima.png",
+            "card": "bots/files/koya-nakajima.json",
+            "scripts": [],
+            "previewText": "Beauty--to her--is something that bloodies the hand when touched.",
+            "description": "", 
+            "dateAdded": "27-09-2026",
+            "alt": false,
+            "legacy": false
+        }
+    ]
+}
