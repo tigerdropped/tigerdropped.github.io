@@ -19,14 +19,14 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap" rel="stylesheet">
     
     <!-- style & script -->
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <script src="./assets/js/script.js" defer></script>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script src="/assets/js/script.js" defer></script>
 </head>
 <body>
 
     <!-- Navigation -->
     <header class="nav-header flex-row">
-        <a href="./" class="logo"><strong>Tigerdropped</strong></a>
+        <a href="/" class="logo"><strong>Tigerdropped</strong></a>
         <nav>
             <a href="#bots">Bots</a>
             <a href="#commissions">Commissions</a>
@@ -38,31 +38,34 @@
     <main>
         <!-- initial -->
         <section class="hero">
+            <div class="hero-image-wrapper">
+                <img src="hero-image" src="" alt="">
+            </div>
             <h1>Creator Hub (WIP)</h1>
             <p>ST Cards, CSS Gallery, Commission info. Explore my recent works, grab free templates, or check out useful repositories for JanitorAI.</p>
         </section>
-
-        <hr>
 
         <!-- Preview feed: bots -->
         <section id="bots" class="feed-section">
             <div class="flex-row">
                 <h2>Latest ST Cards</h2>
-                <a href="./bots/" class="btn-outline">See all bots &rarr;</a>
+                <a href="/bots/" class="btn-outline">See all bots &rarr;</a>
             </div>
-            <div id="recent-bots-feed" class="grid-auto">
+            <div id="recent-bots-feed" class="flex-auto-scroll">
                 <!-- JS controls bot cards -->
             </div>
         </section>
+
+        <hr>
 
         <!-- Preview feed: commissions -->
         <section id="commissions" class="feed-section">
             <div class="flex-row">
                 <h2>Latest commission</h2>
-                <a href="./commissions/" class="btn-outline">Learn more &rarr;</a>
+                <a href="/commissions/" class="btn-outline">Learn more &rarr;</a>
             </div>
             <!-- Empty container where JS will inject the 2-3 newest gallery items -->
-            <div id="recent-commissions-feed" class="grid-auto">
+            <div id="recent-commissions-feed" class="flex-auto-scroll">
                 <article class="card">Previous commission</article>
             </div>
         </section>
@@ -71,28 +74,30 @@
         <section id="gallery" class="feed-section">
             <div class="flex-row">
                 <h2>Recent CSS Designs</h2>
-                <a href="./gallery/" class="btn-outline">See full gallery &rarr;</a>
+                <a href="/gallery/" class="btn-outline">See full gallery &rarr;</a>
             </div>
             <!-- Empty container where JS will inject the 2-3 newest gallery items -->
-            <div id="recent-gallery-feed" class="grid-auto">
+            <div id="recent-gallery-feed" class="flex-auto-scroll">
                 <article class="card">Loading latest design...</article>
                 <article class="card">Loading latest design...</article>
             </div>
         </section>
 
+        <hr>
+
         <!-- Preview feed: templates -->
         <section id="resources" class="feed-section">
             <h2>Resources</h2>
-            <div class="grid-auto">
+            <div class="flex-auto-scroll">
                 <article class="card">
                     <h3>Free Templates</h3>
                     <p>Resources for your janitorai profile.</p>
-                    <a href="./templates/" class="btn">View Templates</a>
+                    <a href="/templates/" class="btn">View Templates</a>
                 </article>
                 <article class="card">
                     <h3>Tools & Repos</h3>
                     <p>Explore my other GitHub projects and web tools.</p>
-                    <a href="./tools/" class="btn">View Tools</a>
+                    <a href="/tools/" class="btn">View Tools</a>
                 </article>
             </div>
         </section>
@@ -110,7 +115,7 @@
         </div>
         <hr>
         <div class="footer-bottom">
-            <small>&copy; 2026 tigerdropped. Hosted on GitHub Pages.</small>
+            <small>&copy; 2026 tigerdropped. Report issues through repository.</small>
         </div>
     </footer>
 

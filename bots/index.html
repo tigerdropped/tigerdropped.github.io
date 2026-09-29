@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ST Cards | tigerCSS Portal</title>
+    <meta name="description" content="Tiger's Collection of Chatbots">
+
+    <!-- favicons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap" rel="stylesheet">
+    
+    <!-- style & script -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script src="/assets/js/script.js" defer></script>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header class="nav-header flex-row">
+        <a href="../" class="logo"><strong>Tigerdropped</strong></a>
+        <nav>
+            <a href="#latest">Latest</a>
+            <a href="#all">All</a>
+            <a href="#series">Series</a>
+            <a href="#legacy">Legacy</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- initial -->
+        <section class="hero">
+            <h1>ST Cards (WIP)</h1>
+            <p>A collection of all the bots I've posted, ready to download.</p>
+        </section>
+
+        <!-- Latest bots -->
+        <section id="bots" class="feed-section">
+            <div class="flex-row">
+                <h2>Latest ST Cards</h2>
+                <a href="./bots/" class="btn-outline">See all bots &rarr;</a>
+            </div>
+            <div id="recent-bots-feed" class="flex-auto-scroll">
+                <!-- JS controls bot cards -->
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- All bots -->
+        <section id="all" class="feed-section">
+            <div class="flex-row">
+                <h2>All bots</h2>
+                <a href="./commissions/" class="btn-outline">Learn more &rarr;</a>
+            </div>
+            <!-- Empty container where JS will inject the 2-3 newest gallery items -->
+            <div id="full-bots-gallery" class="flex-auto-wrap">
+                <!-- JS controls bot cards -->
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- Series -->
+        <section id="series" class="feed-section">
+            <div class="flex-row">
+                <h2>Series</h2>
+                <a href="/gallery/" class="btn-outline">See full gallery &rarr;</a>
+            </div>
+            <!-- Empty container where JS will inject the 2-3 newest gallery items -->
+            <div id="recent-gallery-feed" class="flex-auto-scroll">
+                <article class="card">Loading latest design...</article>
+                <article class="card">Loading latest design...</article>
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- legacy -->
+        <section id="legacy" class="feed-section">
+            <div class="flex-row">
+                <h2>Legacy cards</h2>
+            </div>
+            <!-- Empty container where JS will inject the 2-3 newest gallery items -->
+            <div id="legacy-bots-gallery" class="flex-auto-wrap">
+                <!-- JS controls bot cards -->
+            </div>
+        </section>
+    </main>
+
+    <!-- CONTACT / FOOTER -->
+    <footer class="site-footer" id="contact">
+        <div class="footer-content">
+            <h2>Contact</h2>
+            <p>Commissions are currently closed, but you can still contact me if you have questions.</p>
+            <div class="contact-links flex-row">
+                <a href="https://payhip.com/your-link" target="_blank" rel="noopener noreferrer">Payhip</a>
+                <a href="https://discord.com/users/your-id" target="_blank" rel="noopener noreferrer">Discord</a>
+            </div>
+        </div>
+        <hr>
+        <div class="footer-bottom">
+            <small>&copy; 2026 tigerdropped. Report issues through repository.</small>
+        </div>
+    </footer>
+
+    <!-- Modal gallery -->
+    <div id="bot-modal" class="modal-overlay hidden">
+        <div class="modal-container">
+    
+            <!-- Gallery information -->
+            <header class="modal-header flex-row">
+                <button class="filters modal-btn">
+                    .
+                </button>
+                <h3 id="modal-title">Character Name</h3>
+                <button id="modal-close" class="modal-btn">
+                    ✕
+                </button>
+            </header>
+
+            <!-- modal contents -->
+            <div id="modal-content" class="modal-body">
+                <!-- Left side / Card -->
+                <aside class="modal-left" id="modal-card-slot">
+                   <!-- JavaScript will inject the card here -->
+                </aside>
+
+                <!-- RIGHT: Full Description -->
+                <main class="modal-right">
+
+                    <section class="modal-char-info">
+
+                        <details class="modal-dropdown">
+                            <summary>                            
+                                <h2>Lore & Details</h2>
+                            </summary>
+                            <div id="modal-description">
+                                <!-- JavaScript will inject the fullDescription here -->
+                            </div>
+                        </details>
+
+                    </section>
+
+                    <!-- FOOTER: Mini Gallery -->
+                    <footer class="modal-footer">
+                        <div class="mini-gallery-scroll" id="modal-mini-gallery">
+                            <!-- Tiny avatars will inject here -->
+                        </div>
+                    </footer>
+
+                </main>
+            </div>
+
+        </div>
+    </div>  
+</body>
+</html>
