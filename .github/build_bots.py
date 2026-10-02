@@ -2,8 +2,8 @@
 Builds bots/data.json from the folders inside bots/files/.
 
 One folder per character. The folder name is the character's id
-(lowercase-with-hyphens, e.g. ayaka-ishikawa) and is also what shows up
-in share links (?bot=ayaka-ishikawa).
+(lowercase-with-hyphens, e.g. character-name) and is also what shows up
+in share links (?bot=character-name).
 
   bots/files/ayaka-ishikawa/
       anything.png    REQUIRED  the card image (exactly one .png in the folder)
@@ -63,10 +63,13 @@ def date_first_committed(path):
     return out[-1] if out else ""
 
 
+def strip_html(notes):
+    return re.sub(r"<[^>]*>", "", notes or "")
+
+
 def fallback_preview(notes):
     """Safety net when meta.json has no previewText: start of creator_notes, tags stripped."""
-    text = re.sub(r"<[^>]*>", "", notes or "")
-    text = " ".join(text.split())
+    text = " ".join(strip_html(notes).split())
     return text[:160] + ("…" if len(text) > 160 else "")
 
 
@@ -95,7 +98,7 @@ def build_bot(folder):
                for p in sorted((folder / "scripts").glob("*"), key=natural_key)
                if p.is_file()]
     extras = [web_path(p)
-              for p in sorted((folder / "extra").glob("*"), key=natural_key)
+              for p in sorted((folder / "extras").glob("*"), key=natural_key)
               if p.is_file() and p.suffix.lower() in IMAGE_TYPES]
 
     added = meta.get("dateAdded") or date_first_committed(card) or date.today().isoformat()
@@ -107,6 +110,13 @@ def build_bot(folder):
     if isinstance(preview, list):
         preview = " ".join(preview)
 
+    # fullDescription is raw HTM, taken from creator_notes, otherwise taken from meta.json.
+    full_description = meta.get("fullDescription")
+    if full_description is None:
+        full_description = data.get("creator_notes") or ""
+    if isinstance(full_description, list):   # old array-of-paragraphs format, still supported
+        full_description = "".join(f"<p>{p}</p>" for p in full_description)
+
     return {
         "id": folder.name,
         "name": data.get("name", folder.name),
@@ -116,7 +126,7 @@ def build_bot(folder):
         "series": meta.get("series", ""),
         "tags": data.get("tags", []),
         "previewText": preview,
-        "fullDescription": meta.get("fullDescription", []),
+        "fullDescription": full_description,
         "image": web_path(png),
         "card": web_path(card),
         "scripts": scripts,

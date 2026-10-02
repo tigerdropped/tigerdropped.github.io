@@ -14,7 +14,7 @@ const newestFirst = field => (a, b) => new Date(b[field]) - new Date(a[field]);
 
 // "Ayaka Ishikawa" + "(石川彩香)" + label "v2" -> "Ayaka Ishikawa (石川彩香) · v2". Skips empty parts.
 const displayName = bot => {
-  const name = [bot.name, bot.altName].filter(Boolean).join(' ');
+  const name = [bot.name].filter(Boolean).join(' ');
   return bot.altLabel ? `${name} · ${bot.altLabel}` : name;
 };
 
@@ -45,7 +45,7 @@ function generateBotCards(botArray, isModal = false) {
           <p>Trope, backstory, scenario, extra images & more.</p>
         </a>
         <div class="char-name">
-          <h3>${bot.name}</h3>
+          <h3>${bot.id}</h3>
           ${bot.altName ? `<h5>${bot.altName}</h5>` : ''}
           ${bot.series ? `<h6>${bot.series}</h6>` : ''}
         </div>`;
@@ -61,10 +61,13 @@ function generateBotCards(botArray, isModal = false) {
 
     // Gallery only
     const analytics = isModal ? '' : `
-      <div class="char-analytics flex-row">
-        ${bot.alts ? '<span class="alt-count">Alts available</span>' : ''}
-        ${bot.scripts && bot.scripts.length > 0 ? `<span class="script-count">${bot.scripts.length} Script(s)</span>` : ''}
-      </div>`;
+      <div class="char-analytics flex-row">${bot.alts ? '<span class="alt-count">Alts available</span>' : ''}${bot.scripts && bot.scripts.length > 0 ? `<span class="script-count">${bot.scripts.length} Script(s)</span>` : ''}</div>`;
+
+    const preview = isModal ? '' : `
+      <p>
+        ${bot.previewText}
+      </p>
+    `
 
     // Script downloads (modal)
     const scriptButtons = (isModal && bot.scripts && bot.scripts.length > 0) ? `
@@ -79,7 +82,7 @@ function generateBotCards(botArray, isModal = false) {
         <section class="char-description">
           ${tags}
           ${analytics}
-          <p>${bot.previewText}</p>
+          ${preview}
         </section>
         <div class="char-actions flex-row">
           <a class="btn" href="${image}" download="${bot.id}.png">Get .png</a>
@@ -105,11 +108,11 @@ function setupModal(bots, modal) {
     const bot = bots.find(b => b.id === botId);
     if (!bot) return;
 
-    title.textContent = displayName(bot);
+     title.textContent = displayName(bot);
     cardSlot.innerHTML = generateBotCards([bot], true);
-    description.innerHTML = bot.fullDescription.length > 0
-      ? paragraphs(bot.fullDescription)
-      : '<p>Coming soon...</p>';
+    // fullDescription is HTML.
+    const hasDescription = bot.fullDescription && bot.fullDescription.trim().length > 0;
+    description.innerHTML = hasDescription ? bot.fullDescription : '<p>Coming soon...</p>';
 
     modal.classList.remove('hidden');
     document.body.classList.add('modal-open');
