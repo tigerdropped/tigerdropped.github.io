@@ -1,0 +1,29 @@
+name: Build bot index
+
+on:
+  push:
+    paths: ["bots/files/**"]
+  workflow_dispatch:   # adds a "Run workflow" button in the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # full history, needed to read "first committed" dates
+
+      - run: python .github/build_bots.py
+
+      - name: Commit data.json if it changed
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add bots/data.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Update bot index"
+            git push
+          fi
