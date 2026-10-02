@@ -1,4 +1,6 @@
-# tigerdropped.github.io
-Main hub for all my content. ST Cards, CSS and repositories.
+# My creator hub!
+Made to host all my content. ST Cards, CSS and repositories.
 
-Work in Progress. Come back later.
+Simply head to tigerdropped.github.io and check it out!
+
+Work in Progress. Be sure to check every now and then!
